@@ -9,14 +9,14 @@ const PhaseChart = ({ phases }) => {
             <BarChart
                 xAxis={[
                     {
-                        data: phases.map((phase) => `${phase.start} - ${phase.end}`), // Categorical data for x-axis
+                        data: phases?.map((phase) => `${phase.start} - ${phase.end}`) ?? [], // Categorical data for x-axis
                         label: 'Phase Period',
                         scaleType: 'band', // Set the scale type to band for categorical data
                     },
                 ]}
                 series={[
                     {
-                        data: phases.map((phase) => phase.length),
+                        data: phases?.map((phase) => phase.length) ?? [],
                         label: 'Phase Length (Days)',
                         color: (params) => {
                             console.log('params', params);
