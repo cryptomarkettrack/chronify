@@ -1,6 +1,6 @@
 import ccxt from 'ccxt';
 // Initialize Binance exchange instance
-const exchange = new ccxt.bybit();
+const exchange = new ccxt.binance();
 // Fetch OHLCV data
 async function fetchOHLCV(symbol, timeframe, since, limit = 1000) {
     try {
