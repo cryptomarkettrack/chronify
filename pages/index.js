@@ -2,6 +2,7 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 import { Bebas_Neue } from 'next/font/google';
 import { createTheme } from '@mui/material/styles';
 import DashboardLayoutBasic from './DashboardLayoutBasic';
+import { Analytics } from "@vercel/analytics/react"
 
 const bebasFont = Bebas_Neue({ subsets: ['latin'], weight: '400' });
 
@@ -23,6 +24,7 @@ export default function Home() {
 
   return (
     <ThemeProvider theme={darkTheme}>
+      <Analytics />
       <CssBaseline />
       <DashboardLayoutBasic />
     </ThemeProvider>
