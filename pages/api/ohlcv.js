@@ -2,7 +2,7 @@
 
 import ccxt from 'ccxt';
 
-const exchange = new ccxt.binance();
+const exchange = new ccxt.bybit();
 
 // Fetch OHLCV data
 async function fetchOHLCV(symbol, timeframe, since, limit = 1000) {

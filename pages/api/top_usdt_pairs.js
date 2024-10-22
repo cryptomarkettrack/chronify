@@ -1,6 +1,6 @@
 import ccxt from 'ccxt';
 
-const exchange = new ccxt.binance();
+const exchange = new ccxt.bybit();
 
 export async function fetchUSDTPairs() {
     const markets = await exchange.fetchMarkets();
