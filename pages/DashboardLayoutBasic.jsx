@@ -4,16 +4,25 @@ import { createTheme } from '@mui/material/styles';
 import { AppProvider } from '@toolpad/core/AppProvider';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 import { useDemoRouter } from '@toolpad/core/internal';
-import { Teko } from 'next/font/google';
+import { Righteous } from 'next/font/google';
 import PropTypes from 'prop-types';
 import * as React from 'react';
 import MarketCycleComparison from './MarketCycleComparison';
 import Comparator from './Comparator';
+import AboutSection from './AboutSection';
 
-const tekosFont = Teko({ subsets: ['latin'], weight: '400' });
+const font = Righteous({ subsets: ['latin'], weight: '400' });
 const demoTheme = createTheme({
+  palette: {
+    primary: {
+      main: '#3f51b5', // Set your main color here
+    },
+    secondary: {
+      main: '#f50057', // Optional: set a secondary color
+    },
+  },
   typography: {
-    fontFamily: tekosFont.style.fontFamily,
+    fontFamily: font.style.fontFamily,
   },
   cssVariables: {
     colorSchemeSelector: 'data-toolpad-color-scheme',
@@ -36,6 +45,8 @@ function DashboardLayoutBasic({ window }) {
   // Function to map segments to their components
   const renderComponent = () => {
     switch (router.pathname) {
+      case '/about':
+        return <AboutSection />;
       case '/dashboard':
         return <Comparator />;
       case '/marketCycleComparison':
@@ -54,6 +65,12 @@ function DashboardLayoutBasic({ window }) {
     // preview-start
     <AppProvider
       navigation={[
+        {
+          segment: 'about',
+          title: 'Why Chronify?',
+          icon: <LayersIcon />,
+          onClick: () => router.navigate('about'), // Navigate on click
+        },
         {
           segment: 'dashboard',
           title: 'Comparator',

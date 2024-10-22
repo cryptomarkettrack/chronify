@@ -137,10 +137,25 @@ export default function Comparator() {
 
     return (
         <Container>
-            <Typography variant="h4" align="center" gutterBottom>Compare Crypto Data</Typography>
+            <h1 align="center">Unlock Hidden Market Patterns with Chronify</h1>
+            <h5 align="center">Analyze historical crypto market trends to discover recurring patterns, predict future movements, and make data-driven decisions.</h5>
 
             <Grid2 container spacing={3} justifyContent="center">
-                <Grid2 item md={6}>
+                <Grid2 item>
+                    <FormControl fullWidth>
+                        <Autocomplete
+                            sx={{ width: '150px' }}
+                            value={selectedPair}
+                            onChange={(event, newValue) => setSelectedPair(newValue)}
+                            options={usdtPairs}
+                            disableClearable
+                            renderInput={(params) => (
+                                <TextField {...params} label="Pair" variant="outlined" fullWidth /> // Ensure TextField is full width
+                            )}
+                        />
+                    </FormControl>
+                </Grid2>
+                <Grid2 item>
                     <FormControl fullWidth>
                         <TextField
                             label="From Period Start"
@@ -148,11 +163,12 @@ export default function Comparator() {
                             value={fromPeriodStart}
                             onChange={e => setFromPeriodStart(e.target.value)}
                             variant="outlined"
+                            fullWidth // Ensure TextField is full width
                         />
                     </FormControl>
                 </Grid2>
 
-                <Grid2 item md={6}>
+                <Grid2 item>
                     <FormControl fullWidth>
                         <TextField
                             label="To Period End"
@@ -160,41 +176,47 @@ export default function Comparator() {
                             value={toPeriodEnd}
                             onChange={e => setToPeriodEnd(e.target.value)}
                             variant="outlined"
+                            fullWidth // Ensure TextField is full width
                         />
                     </FormControl>
                 </Grid2>
 
-                <Grid2 item md={6}>
+                <Grid2 item>
                     <FormControl fullWidth>
                         <TextField
+                            sx={{ width: '170px' }}
                             label="Compared Period Start"
                             type="date"
                             value={comparedFromPeriodStart}
                             onChange={e => setComparedFromPeriodStart(e.target.value)}
                             variant="outlined"
+                            fullWidth // Ensure TextField is full width
                         />
                     </FormControl>
                 </Grid2>
 
-                <Grid2 item md={6}>
+                <Grid2 item>
                     <FormControl fullWidth>
                         <TextField
+                            sx={{ width: '150px' }}
                             label="Compared Period End"
                             type="date"
                             value={comparedToPeriodEnd}
                             onChange={e => setComparedToPeriodEnd(e.target.value)}
                             variant="outlined"
+                            fullWidth // Ensure TextField is full width
                         />
                     </FormControl>
                 </Grid2>
 
-                <Grid2 item md={6}>
+                <Grid2 item>
                     <FormControl fullWidth>
-                        <InputLabel>Select Timeframe</InputLabel>
+                        <InputLabel>Timeframe</InputLabel>
                         <Select
                             value={timeframe}
                             onChange={e => setTimeframe(e.target.value)}
                             variant="outlined"
+                            fullWidth // Ensure Select is full width
                         >
                             <MenuItem value="1d">Daily</MenuItem>
                             <MenuItem value="1w">Weekly</MenuItem>
@@ -203,18 +225,8 @@ export default function Comparator() {
                         </Select>
                     </FormControl>
                 </Grid2>
-
-                <Grid2 item md={6}>
-                    <FormControl fullWidth>
-                        <Autocomplete
-                            value={selectedPair}
-                            onChange={(event, newValue) => setSelectedPair(newValue)}
-                            options={usdtPairs}
-                            renderInput={(params) => <TextField {...params} label="Select Pair" variant="outlined" />}
-                        />
-                    </FormControl>
-                </Grid2>
             </Grid2>
+
 
             <Grid2 container spacing={3} justifyContent="center" style={{ marginTop: '20px' }}>
                 <Grid2 item >
