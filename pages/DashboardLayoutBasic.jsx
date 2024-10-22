@@ -31,7 +31,7 @@ const demoTheme = createTheme({
 });
 
 function DashboardLayoutBasic({ window }) {
-  const router = useDemoRouter('/marketCycleComparison');
+  const router = useDemoRouter('/dashboard');
 
   // Function to map segments to their components
   const renderComponent = () => {
@@ -65,12 +65,6 @@ function DashboardLayoutBasic({ window }) {
           title: 'Market Cycle Comparison',
           icon: <LayersIcon />,
           onClick: () => router.navigate('marketCycleComparison'), // Navigate on click
-        },
-        {
-          segment: 'heatmap',
-          title: 'Performance Heatmap',
-          icon: <LayersIcon />,
-          onClick: () => router.navigate('heatmap'), // Navigate on click
         }
       ]
       }
