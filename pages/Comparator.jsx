@@ -12,6 +12,7 @@ import {
 } from '@mui/material';
 import { createChart } from 'lightweight-charts';
 import { fetchUSDTPairs } from './api/top_usdt_pairs';
+import styles from './Comparator.module.css'; // Import the CSS Module
 
 const DEFAULT_PAIR = 'BTC/USDT';
 
@@ -141,7 +142,7 @@ export default function Comparator() {
             <h5 align="center">Analyze historical crypto market trends to discover recurring patterns, predict future movements, and make data-driven decisions.</h5>
 
             <Grid2 container spacing={3} justifyContent="center">
-                <Grid2 item>
+                <Grid2 item xs={12} sm={6} md={4}>
                     <FormControl fullWidth>
                         <Autocomplete
                             sx={{ width: '150px' }}
@@ -150,12 +151,12 @@ export default function Comparator() {
                             options={usdtPairs}
                             disableClearable
                             renderInput={(params) => (
-                                <TextField {...params} label="Pair" variant="outlined" fullWidth /> // Ensure TextField is full width
+                                <TextField {...params} label="Pair" variant="outlined" fullWidth />
                             )}
                         />
                     </FormControl>
                 </Grid2>
-                <Grid2 item>
+                <Grid2 item xs={12} sm={6} md={4}>
                     <FormControl fullWidth>
                         <TextField
                             label="From Period Start"
@@ -163,12 +164,12 @@ export default function Comparator() {
                             value={fromPeriodStart}
                             onChange={e => setFromPeriodStart(e.target.value)}
                             variant="outlined"
-                            fullWidth // Ensure TextField is full width
+                            fullWidth
                         />
                     </FormControl>
                 </Grid2>
 
-                <Grid2 item>
+                <Grid2 item xs={12} sm={6} md={4}>
                     <FormControl fullWidth>
                         <TextField
                             label="To Period End"
@@ -176,12 +177,12 @@ export default function Comparator() {
                             value={toPeriodEnd}
                             onChange={e => setToPeriodEnd(e.target.value)}
                             variant="outlined"
-                            fullWidth // Ensure TextField is full width
+                            fullWidth
                         />
                     </FormControl>
                 </Grid2>
 
-                <Grid2 item>
+                <Grid2 item xs={12} sm={6} md={4}>
                     <FormControl fullWidth>
                         <TextField
                             sx={{ width: '170px' }}
@@ -190,12 +191,12 @@ export default function Comparator() {
                             value={comparedFromPeriodStart}
                             onChange={e => setComparedFromPeriodStart(e.target.value)}
                             variant="outlined"
-                            fullWidth // Ensure TextField is full width
+                            fullWidth
                         />
                     </FormControl>
                 </Grid2>
 
-                <Grid2 item>
+                <Grid2 item xs={12} sm={6} md={4}>
                     <FormControl fullWidth>
                         <TextField
                             sx={{ width: '150px' }}
@@ -204,19 +205,19 @@ export default function Comparator() {
                             value={comparedToPeriodEnd}
                             onChange={e => setComparedToPeriodEnd(e.target.value)}
                             variant="outlined"
-                            fullWidth // Ensure TextField is full width
+                            fullWidth
                         />
                     </FormControl>
                 </Grid2>
 
-                <Grid2 item>
+                <Grid2 item xs={12} sm={6} md={4}>
                     <FormControl fullWidth>
                         <InputLabel>Timeframe</InputLabel>
                         <Select
                             value={timeframe}
                             onChange={e => setTimeframe(e.target.value)}
                             variant="outlined"
-                            fullWidth // Ensure Select is full width
+                            fullWidth
                         >
                             <MenuItem value="1d">Daily</MenuItem>
                             <MenuItem value="1w">Weekly</MenuItem>
@@ -227,17 +228,17 @@ export default function Comparator() {
                 </Grid2>
             </Grid2>
 
-
-            <Grid2 container spacing={3} justifyContent="center" style={{ marginTop: '20px' }}>
-                <Grid2 item >
+            <Grid2 container spacing={3} justifyContent="center" className={styles.chartContainer} style={{ marginTop: '20px' }}>
+                <Grid2 item>
                     <Typography variant="h6" align="center">Current Period</Typography>
-                    <div ref={currentChartRef} className="chart" style={{ width: '30vw', height: '550px', borderRadius: '10px' }}></div>
+                    <div ref={currentChartRef} className={`${styles.chartBox} chart`}></div>
                 </Grid2>
-                <Grid2 item >
+                <Grid2 item>
                     <Typography variant="h6" align="center">Compared Period</Typography>
-                    <div ref={comparedChartRef} className="chart" style={{ width: '30vw', height: '550px', borderRadius: '10px' }}></div>
+                    <div ref={comparedChartRef} className={`${styles.chartBox} chart`}></div>
                 </Grid2>
             </Grid2>
+
         </Container>
     );
 }

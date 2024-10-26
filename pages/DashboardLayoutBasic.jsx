@@ -13,14 +13,6 @@ import AboutSection from './AboutSection';
 
 const font = Righteous({ subsets: ['latin'], weight: '400' });
 const demoTheme = createTheme({
-  palette: {
-    primary: {
-      main: '#3f51b5', // Set your main color here
-    },
-    secondary: {
-      main: '#f50057', // Optional: set a secondary color
-    },
-  },
   typography: {
     fontFamily: font.style.fontFamily,
   },
@@ -37,17 +29,26 @@ const demoTheme = createTheme({
       xl: 1536,
     },
   },
+  palette: {
+    primary: {
+      main: '#3f51b5', // Set your desired primary main color here
+    },
+    secondary: {
+      main: '#f50057', // Optional: set a secondary color
+    },
+    // Add other palette colors as needed
+  },
 });
 
 function DashboardLayoutBasic({ window }) {
-  const router = useDemoRouter('/dashboard');
+  const router = useDemoRouter('/comparator');
 
   // Function to map segments to their components
   const renderComponent = () => {
     switch (router.pathname) {
       case '/about':
         return <AboutSection />;
-      case '/dashboard':
+      case '/comparator':
         return <Comparator />;
       case '/marketCycleComparison':
         return <MarketCycleComparison />;
@@ -72,10 +73,10 @@ function DashboardLayoutBasic({ window }) {
           onClick: () => router.navigate('about'), // Navigate on click
         },
         {
-          segment: 'dashboard',
+          segment: 'comparator',
           title: 'Comparator',
           icon: <DashboardIcon />,
-          onClick: () => router.navigate('dashboard'), // Navigate on click
+          onClick: () => router.navigate('comparator'), // Navigate on click
         },
         {
           segment: 'marketCycleComparison',
