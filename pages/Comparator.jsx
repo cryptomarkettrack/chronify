@@ -160,31 +160,7 @@ export default function Comparator() {
                         />
                     </FormControl>
                 </Grid2>
-                <Grid2 item xs={12} sm={6} md={4}>
-                    <FormControl fullWidth>
-                        <TextField
-                            label="From Period Start"
-                            type="date"
-                            value={fromPeriodStart}
-                            onChange={e => setFromPeriodStart(e.target.value)}
-                            variant="outlined"
-                            fullWidth
-                        />
-                    </FormControl>
-                </Grid2>
 
-                <Grid2 item xs={12} sm={6} md={4}>
-                    <FormControl fullWidth>
-                        <TextField
-                            label="To Period End"
-                            type="date"
-                            value={toPeriodEnd}
-                            onChange={e => setToPeriodEnd(e.target.value)}
-                            variant="outlined"
-                            fullWidth
-                        />
-                    </FormControl>
-                </Grid2>
 
                 <Grid2 item xs={12} sm={6} md={4}>
                     <FormControl fullWidth>
@@ -208,6 +184,30 @@ export default function Comparator() {
                             type="date"
                             value={comparedToPeriodEnd}
                             onChange={e => setComparedToPeriodEnd(e.target.value)}
+                            variant="outlined"
+                            fullWidth
+                        />
+                    </FormControl>
+                </Grid2><Grid2 item xs={12} sm={6} md={4}>
+                    <FormControl fullWidth>
+                        <TextField
+                            label="From Period Start"
+                            type="date"
+                            value={fromPeriodStart}
+                            onChange={e => setFromPeriodStart(e.target.value)}
+                            variant="outlined"
+                            fullWidth
+                        />
+                    </FormControl>
+                </Grid2>
+
+                <Grid2 item xs={12} sm={6} md={4}>
+                    <FormControl fullWidth>
+                        <TextField
+                            label="To Period End"
+                            type="date"
+                            value={toPeriodEnd}
+                            onChange={e => setToPeriodEnd(e.target.value)}
                             variant="outlined"
                             fullWidth
                         />
