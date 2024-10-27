@@ -18,11 +18,7 @@ const PhaseChart = ({ phases }) => {
                     {
                         data: phases?.map((phase) => phase.length) ?? [],
                         label: 'Phase Length (Days)',
-                        color: (params) => {
-                            console.log('params', params);
-                            phases[params.index].phase === 'bull' ? 'green' : 'red';
-
-                        }
+                        color: '#fdb462'
                     },
                 ]}
             />

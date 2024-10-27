@@ -13,6 +13,7 @@ import {
 import { createChart } from 'lightweight-charts';
 import { fetchUSDTPairs } from './api/top_usdt_pairs';
 import styles from './Comparator.module.css'; // Import the CSS Module
+import CircularProgress from '@mui/material/CircularProgress';
 
 const DEFAULT_PAIR = 'BTC/USDT';
 
@@ -32,7 +33,7 @@ export default function Comparator() {
     const [fromPeriodStart, setFromPeriodStart] = useState(formatDate(firstDayOfMonth));
     const [toPeriodEnd, setToPeriodEnd] = useState(formatDate(lastDayOfMonth));
     const [comparedFromPeriodStart, setComparedFromPeriodStart] = useState(formatDate(new Date(now.getFullYear() - comparedYearOffset, now.getMonth(), 1)));
-    const [comparedToPeriodEnd, setComparedToPeriodEnd] = useState(formatDate(new Date(now.getFullYear() - comparedYearOffset, now.getMonth() + 1, 0)));
+    const [comparedToPeriodEnd, setComparedToPeriodEnd] = useState(formatDate(new Date(now.getFullYear() - comparedYearOffset, now.getMonth() + 2, 0)));
 
     const [timeframe, setTimeframe] = useState('4h');
     const [usdtPairs, setUsdtPairs] = useState([DEFAULT_PAIR]);
@@ -40,6 +41,7 @@ export default function Comparator() {
 
     const [currentPeriodData, setCurrentPeriodData] = useState([]);
     const [comparedPeriodData, setComparedPeriodData] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     const currentChartRef = useRef(null);
     const comparedChartRef = useRef(null);
@@ -53,7 +55,9 @@ export default function Comparator() {
     }, []);
 
     useEffect(() => {
+        setIsLoading(true);
         fetchChartData();
+        setIsLoading(false);
     }, [fromPeriodStart, toPeriodEnd, comparedFromPeriodStart, comparedToPeriodEnd, timeframe, selectedPair]);
 
     async function fetchChartData() {
@@ -230,12 +234,12 @@ export default function Comparator() {
 
             <Grid2 container spacing={3} justifyContent="center" className={styles.chartContainer} style={{ marginTop: '20px' }}>
                 <Grid2 item>
-                    <Typography variant="h6" align="center">Current Period</Typography>
-                    <div ref={currentChartRef} className={`${styles.chartBox} chart`}></div>
+                    <Typography variant="h6" align="center">{comparedFromPeriodStart} to {comparedToPeriodEnd}</Typography>
+                    {isLoading ? <div style={{ height: '50vh', display: 'flex', alignItems: 'center', verticalAlign: 'center' }}><CircularProgress /> </div> : <div ref={comparedChartRef} className={`${styles.chartBox} chart`}></div>}
                 </Grid2>
                 <Grid2 item>
-                    <Typography variant="h6" align="center">Compared Period</Typography>
-                    <div ref={comparedChartRef} className={`${styles.chartBox} chart`}></div>
+                    <Typography variant="h6" align="center">{fromPeriodStart} to {toPeriodEnd}</Typography>
+                    {isLoading ? <div style={{ height: '50vh', display: 'flex', alignItems: 'center', verticalAlign: 'center' }}><CircularProgress /> </div> : <div ref={currentChartRef} className={`${styles.chartBox} chart`}></div>}
                 </Grid2>
             </Grid2>
 
