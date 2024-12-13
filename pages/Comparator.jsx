@@ -26,16 +26,13 @@ export default function Comparator() {
     };
 
     const now = new Date();
-    const firstDayOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
-    const lastDayOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
-
     const comparedYearOffset = 4;
-    const [fromPeriodStart, setFromPeriodStart] = useState(formatDate(firstDayOfMonth));
-    const [toPeriodEnd, setToPeriodEnd] = useState(formatDate(lastDayOfMonth));
+    const [fromPeriodStart, setFromPeriodStart] = useState(formatDate(new Date(now.getFullYear(), now.getMonth() - 1, 1)));
+    const [toPeriodEnd, setToPeriodEnd] = useState(formatDate(new Date(now.getFullYear(), now.getMonth() + 1, 0)));
     const [comparedFromPeriodStart, setComparedFromPeriodStart] = useState(formatDate(new Date(now.getFullYear() - comparedYearOffset, now.getMonth(), 1)));
     const [comparedToPeriodEnd, setComparedToPeriodEnd] = useState(formatDate(new Date(now.getFullYear() - comparedYearOffset, now.getMonth() + 2, 0)));
 
-    const [timeframe, setTimeframe] = useState('4h');
+    const [timeframe, setTimeframe] = useState('1d');
     const [usdtPairs, setUsdtPairs] = useState([DEFAULT_PAIR]);
     const [selectedPair, setSelectedPair] = useState(DEFAULT_PAIR);
 
@@ -105,15 +102,16 @@ export default function Comparator() {
         });
 
         const now = new Date();
-        const currentDay = now.getDate();
-        const currentMonth = now.getMonth();
+        const fourYearsAgo = new Date();
+        if (comparedToPeriodEnd?.length > 0) {
+            const targetData = now.getFullYear() - (now.getFullYear() - parseInt(comparedFromPeriodStart.split('-')[0]))
+            fourYearsAgo.setFullYear(targetData);
+        }
 
         const updatedData = isCurrentPeriod ? chartData : chartData.map(candle => {
             const candleDate = new Date(candle.time * 1000);
-            const candleDay = candleDate.getDate();
-            const candleMonth = candleDate.getMonth();
 
-            if (candleMonth < currentMonth || (candleMonth === currentMonth && candleDay < currentDay)) {
+            if (candleDate < fourYearsAgo) {
                 return {
                     ...candle,
                     color: 'rgba(255,255,255,0.2)',
@@ -143,7 +141,7 @@ export default function Comparator() {
     return (
         <Container>
             <h1 align="center">Unlock Hidden Market Patterns with Chronify</h1>
-            <h5 align="center">Analyze historical crypto market trends to discover recurring patterns, predict future movements, and make data-driven decisions.</h5>
+            <h5 align="center">“History Doesn't Repeat Itself, but It Often Rhymes”.</h5>
 
             <Grid2 container spacing={3} justifyContent="center">
                 <Grid2 item xs={12} sm={6} md={4}>
