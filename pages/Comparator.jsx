@@ -127,7 +127,7 @@ export default function Comparator() {
         if (!isCurrentPeriod) {
             const markers = [
                 {
-                    time: { year: 2020, month: 12, day: 15 },
+                    time: { year: parseInt(comparedFromPeriodStart.split('-')[0]), month: now.getMonth() + 1, day: now.getDate() },
                     position: 'belowBar',
                     color: '#f68410',
                     shape: 'circle',
