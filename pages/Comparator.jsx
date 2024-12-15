@@ -29,7 +29,7 @@ export default function Comparator() {
     const comparedYearOffset = 4;
     const [fromPeriodStart, setFromPeriodStart] = useState(formatDate(new Date(now.getFullYear(), now.getMonth() - 1, 1)));
     const [toPeriodEnd, setToPeriodEnd] = useState(formatDate(new Date(now.getFullYear(), now.getMonth() + 1, 0)));
-    const [comparedFromPeriodStart, setComparedFromPeriodStart] = useState(formatDate(new Date(now.getFullYear() - comparedYearOffset, now.getMonth(), 1)));
+    const [comparedFromPeriodStart, setComparedFromPeriodStart] = useState(formatDate(new Date(now.getFullYear() - comparedYearOffset, now.getMonth() - 1, 1)));
     const [comparedToPeriodEnd, setComparedToPeriodEnd] = useState(formatDate(new Date(now.getFullYear() - comparedYearOffset, now.getMonth() + 2, 0)));
 
     const [timeframe, setTimeframe] = useState('1d');
