@@ -152,6 +152,20 @@ export default function Comparator() {
         }
     }, [comparedPeriodData]);
 
+    function formatMonth(dateString) {
+        const months = [
+            'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+        ];
+
+        const date = new Date(dateString); // Convert the string to a Date object
+        const year = date.getFullYear(); // Get the full year
+        const month = months[date.getMonth()]; // Get the abbreviated month
+        const day = String(date.getDate()).padStart(2, '0'); // Get the day with leading zero if necessary
+
+        return `${year}-${month}-${day}`; // Return the formatted date
+    }
+
     return (
         <Container maxWidth={false}>
             <h5 align="center">“History Doesn't Repeat Itself, but It Often Rhymes”.</h5>
@@ -251,11 +265,11 @@ export default function Comparator() {
 
             <Grid2 container spacing={3} justifyContent="center" className={styles.chartContainer} style={{ marginTop: '20px' }}>
                 <Grid2 item>
-                    <Typography variant="h6" align="center">{comparedFromPeriodStart} to {comparedToPeriodEnd}</Typography>
+                    <Typography variant="h6" align="center">{formatMonth(comparedFromPeriodStart)} to {formatMonth(comparedToPeriodEnd)}</Typography>
                     {isLoading ? <div style={{ height: '50vh', display: 'flex', alignItems: 'center', verticalAlign: 'center' }}><CircularProgress /> </div> : <div ref={comparedChartRef} className={`${styles.chartBox} chart`}></div>}
                 </Grid2>
                 <Grid2 item>
-                    <Typography variant="h6" align="center">{fromPeriodStart} to {toPeriodEnd}</Typography>
+                    <Typography variant="h6" align="center">{formatMonth(fromPeriodStart)} to {formatMonth(toPeriodEnd)}</Typography>
                     {isLoading ? <div style={{ height: '50vh', display: 'flex', alignItems: 'center', verticalAlign: 'center' }}><CircularProgress /> </div> : <div ref={currentChartRef} className={`${styles.chartBox} chart`}></div>}
                 </Grid2>
             </Grid2>
