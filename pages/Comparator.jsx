@@ -123,6 +123,20 @@ export default function Comparator() {
         });
 
         candlestickSeries.setData(updatedData);
+
+        if (!isCurrentPeriod) {
+            const markers = [
+                {
+                    time: { year: 2020, month: 12, day: 15 },
+                    position: 'belowBar',
+                    color: '#f68410',
+                    shape: 'circle',
+                    text: 'We are here',
+                },
+            ];
+            candlestickSeries.setMarkers(markers);
+        }
+
         chart.timeScale().fitContent();
     }
 
