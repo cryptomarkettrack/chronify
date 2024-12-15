@@ -95,7 +95,7 @@ function DashboardLayoutBasic({ window }) {
       }
       }
     >
-      <DashboardLayout>
+      <DashboardLayout defaultSidebarCollapsed>
         {renderComponent()}
       </DashboardLayout>
     </AppProvider >

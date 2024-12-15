@@ -153,7 +153,7 @@ export default function Comparator() {
     }, [comparedPeriodData]);
 
     return (
-        <Container>
+        <Container maxWidth={false}>
             <h1 align="center">Unlock Hidden Market Patterns with Chronify</h1>
             <h5 align="center">“History Doesn't Repeat Itself, but It Often Rhymes”.</h5>
 
