@@ -70,7 +70,7 @@ export default function Comparator() {
 
         const chart = createChart(container, {
             width: container.clientWidth,
-            height: 550,
+            height: 600,
             layout: {
                 background: {
                     color: '#000000'
@@ -154,7 +154,6 @@ export default function Comparator() {
 
     return (
         <Container maxWidth={false}>
-            <h1 align="center">Unlock Hidden Market Patterns with Chronify</h1>
             <h5 align="center">“History Doesn't Repeat Itself, but It Often Rhymes”.</h5>
 
             <Grid2 container spacing={3} justifyContent="center">
@@ -165,6 +164,7 @@ export default function Comparator() {
                             value={selectedPair}
                             onChange={(event, newValue) => setSelectedPair(newValue)}
                             options={usdtPairs}
+                            size='small'
                             disableClearable
                             renderInput={(params) => (
                                 <TextField {...params} label="Pair" variant="outlined" fullWidth />
@@ -180,6 +180,7 @@ export default function Comparator() {
                             sx={{ width: '170px' }}
                             label="Compared Period Start"
                             type="date"
+                            size='small'
                             value={comparedFromPeriodStart}
                             onChange={e => setComparedFromPeriodStart(e.target.value)}
                             variant="outlined"
@@ -193,6 +194,7 @@ export default function Comparator() {
                         <TextField
                             sx={{ width: '150px' }}
                             label="Compared Period End"
+                            size='small'
                             type="date"
                             value={comparedToPeriodEnd}
                             onChange={e => setComparedToPeriodEnd(e.target.value)}
@@ -205,6 +207,7 @@ export default function Comparator() {
                         <TextField
                             label="From Period Start"
                             type="date"
+                            size='small'
                             value={fromPeriodStart}
                             onChange={e => setFromPeriodStart(e.target.value)}
                             variant="outlined"
@@ -218,6 +221,7 @@ export default function Comparator() {
                         <TextField
                             label="To Period End"
                             type="date"
+                            size='small'
                             value={toPeriodEnd}
                             onChange={e => setToPeriodEnd(e.target.value)}
                             variant="outlined"
@@ -233,6 +237,7 @@ export default function Comparator() {
                             value={timeframe}
                             onChange={e => setTimeframe(e.target.value)}
                             variant="outlined"
+                            size='small'
                             fullWidth
                         >
                             <MenuItem value="1d">Daily</MenuItem>
