@@ -43,7 +43,7 @@ const demoTheme = createTheme({
 });
 
 function DashboardLayoutBasic({ window }) {
-  const router = useDemoRouter('/trendlineSniper');
+  const router = useDemoRouter('/comparator');
 
   // Function to map segments to their components
   const renderComponent = () => {
