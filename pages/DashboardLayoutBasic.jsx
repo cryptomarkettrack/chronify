@@ -10,6 +10,8 @@ import * as React from 'react';
 import MarketCycleComparison from './MarketCycleComparison';
 import Comparator from './Comparator';
 import AboutSection from './AboutSection';
+import TrendlineSniper from './TrendlineSniper';
+import AdsClickIcon from '@mui/icons-material/AdsClick';
 
 const font = Righteous({ subsets: ['latin'], weight: '400' });
 const demoTheme = createTheme({
@@ -41,7 +43,7 @@ const demoTheme = createTheme({
 });
 
 function DashboardLayoutBasic({ window }) {
-  const router = useDemoRouter('/comparator');
+  const router = useDemoRouter('/trendlineSniper');
 
   // Function to map segments to their components
   const renderComponent = () => {
@@ -52,6 +54,8 @@ function DashboardLayoutBasic({ window }) {
         return <Comparator />;
       case '/marketCycleComparison':
         return <MarketCycleComparison />;
+      case '/trendlineSniper':
+        return <TrendlineSniper />;
       default:
         return <div>404: Page Not Found</div>;
     }
@@ -83,6 +87,12 @@ function DashboardLayoutBasic({ window }) {
           title: 'Market Cycle Comparison',
           icon: <LayersIcon />,
           onClick: () => router.navigate('marketCycleComparison'), // Navigate on click
+        },
+        {
+          segment: 'trendlineSniper',
+          title: 'Trendline Sniper',
+          icon: <AdsClickIcon />,
+          onClick: () => router.navigate('trendlineSniper'), // Navigate on click
         }
       ]
       }
